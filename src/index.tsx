@@ -204,20 +204,20 @@ function useAppModal(children?: React.ReactNode, modalProps?: ModalProps) {
 function App(props: AppProps) {
   const containerRef = React.useRef<HTMLElement>(null);
   const emitterRef = React.useRef<EventTarget>(new EventTarget());
-  const [visible, setVisible] = React.useState<boolean>(true);
+  const [open, setOpen] = React.useState<boolean>(true);
   const value = useCreation(
     () => ({
       containerRef,
       mount: props.mount,
       emitter: emitterRef.current,
       getPopupContainer: props.getPopupContainer || (() => document.body),
-      toggleRoot: (visible: boolean) => setVisible(visible),
+      toggleRoot: (open: boolean) => setOpen(open),
     }),
     [props.getPopupContainer]
   );
   return (
     <AppContext.Provider value={value}>
-      <div style={{ display: visible ? "contents" : "none" }}>
+      <div style={{ display: open ? "contents" : "none" }}>
         {props.children}
       </div>
       <Elements />
