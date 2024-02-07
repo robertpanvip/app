@@ -7,7 +7,10 @@ import Button from "antd/es/button";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [updateProps] = Holder.useFullMask(<div>mask</div>);
+  const [updateProps] = Holder.useFullMask(<div>
+    <Button onClick={()=>{updateProps({open:false})}}>关闭mask</Button>
+    <div>mask</div>
+  </div>);
   const [updateModalProps] = Holder.useModal(<div>Modal</div>);
   const [updateDrawerProps] = Holder.useDrawer(<div>Drawer</div>);
   const { open: openModal } = Holder.useModal(<div>Modal</div>);
