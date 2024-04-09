@@ -1,3 +1,1 @@
-export type MountProps = {
-
-}
+export type MountProps = Record<string,unknown>
